@@ -6,7 +6,7 @@
   import Sidebar from '../components/Sidebar.svelte'
 
   let data = {}
-  const API = 'https://api-pugstagram.herokuapp.com/?nickname=jman&name=Jhon%20Manuel'
+  const API = 'https://api-pugstagram.herokuapp.com/?nickname=jmam&name=Jhon%20Manuel'
 
   onMount(async () => {
     const response = await fetch(API)

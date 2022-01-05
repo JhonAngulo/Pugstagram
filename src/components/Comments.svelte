@@ -1,3 +1,25 @@
+<script>
+  export let comments = []
+
+  function addComment(event) {
+    const msg = event.target.text.value
+    if (msg.length > 3) {
+      const newComment = {
+        id: Date.now(),
+        text: msg,
+        username: 'jmam'
+      }
+
+      comments = [...comments, newComment]
+      event.target.text.value = ""
+    }
+  }
+
+  function getRandomId() {
+  return Math.random() * (1232322312 - 0) + 0;
+}
+</script>
+
 <style>
   .Comments h3 {
     font-size: 14px;
@@ -46,19 +68,23 @@
     outline: none;
     cursor: pointer;
   }
-  label {
+  /* label {
     display: none;
-  }
+  } */
 </style>
 
 <div class="Comments">
   <div class="Comments-content">
-    <div class="Comments-users">
-      <h3>Crispeta</h3>
-      <span>Hola Elmo</span>
-    </div>
+
+    {#each comments as comment (comment.id)}
+      <div class="Comments-users">
+        <h3>{comment.username}</h3>
+        <span>{comment.text}</span>
+      </div>  
+    {/each}
+
     <div class="Comments-add">
-      <form>
+      <form on:submit|preventDefault={addComment}>
         <input 
           type="text"
           class="Comments-input"
